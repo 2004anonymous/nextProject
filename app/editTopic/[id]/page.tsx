@@ -1,3 +1,4 @@
+import { baseUrl } from '@/app/utils/utilities';
 import EditForm from '@/components/EditForm'
 import React from 'react'
 
@@ -11,7 +12,7 @@ const page: React.FC<EditTopicPageProps> = async ({params}) => {
   const {id} = params
   const getProjectById = async (id: string) => {
     try {
-      const res = await fetch(`/api/projects/${id}`, {
+      const res = await fetch(`${baseUrl}/api/projects/${id}`, {
         cache: "no-store",
       });
       if(!res.ok){

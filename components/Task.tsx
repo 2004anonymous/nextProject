@@ -1,8 +1,10 @@
 import React from "react";
 import TaskLists from "./TaskLists";
+import { baseUrl } from "@/app/utils/utilities";
 
 const Task = async () => {
-  const res = await fetch("/api/projects", {
+
+  const res = await fetch(`${baseUrl}/api/projects`, {
     cache: "no-store",
   });
   const data = await res.json();
