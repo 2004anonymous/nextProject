@@ -3,7 +3,6 @@ import Project from "@/models/project";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-    let result = null;
     const { title, description } = await request.json();
     await connectDb();
     const newProject = new Project({ title, description })

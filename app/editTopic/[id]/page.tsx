@@ -1,6 +1,5 @@
 import EditForm from '@/components/EditForm'
 import React from 'react'
-import { useParams } from 'next/navigation'
 
 interface EditTopicPageProps {
   params: {
@@ -12,7 +11,7 @@ const page: React.FC<EditTopicPageProps> = async ({params}) => {
   const {id} = params
   const getProjectById = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/projects/${id}`, {
+      const res = await fetch(`/api/projects/${id}`, {
         cache: "no-store",
       });
       if(!res.ok){

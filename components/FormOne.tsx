@@ -7,7 +7,7 @@ const FormOne = () => {
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
   getConnection()
-    const res = await fetch("/api/create", {method:"POST",
+    await fetch("/api/create", {method:"POST",
       body: JSON.stringify({
         email:email,
         username: username

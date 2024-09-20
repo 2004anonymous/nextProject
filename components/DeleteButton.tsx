@@ -1,5 +1,5 @@
 "use client";
-import { Delete, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import React from "react";
 import { useRouter } from "next/navigation";
 
