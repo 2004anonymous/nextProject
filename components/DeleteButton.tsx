@@ -2,6 +2,7 @@
 import { Trash } from "lucide-react";
 import React from "react";
 import { useRouter } from "next/navigation";
+import useMyContext from "@/app/utils/useMyContext";
 
 type Prop = {
   id: string;
@@ -9,19 +10,23 @@ type Prop = {
 
 const DeleteButton = ({ id }: Prop) => {
   const router = useRouter();
+  const {refetch,setRefetch} = useMyContext();
   const deleteItem = async (id: string) => {
     try {
       const confirmed = confirm("Are you sure?");
       if (confirmed) {
         const res = await fetch("/api/projects?id=" + id, { method: "DELETE" });
-        if (res.ok) {
-          router.refresh();
-        } else {
+        if (!res.ok) {
           throw new Error("Failed to delete the project");
         }
+      } else {
+        console.log("Confirmation declined");
       }
     } catch (error) {
-      console.log("Error :"+ error);
+      console.log("Error :" + error);
+    }finally{
+      router.refresh();
+      setRefetch(!refetch)
     }
   };
   return (

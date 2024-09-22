@@ -15,7 +15,7 @@ type ProjectsProps = {
   projects: Project[];
 };
 
-const TaskLists: React.FC<ProjectsProps> = async ({projects}) => {
+const TaskLists: React.FC<ProjectsProps> = ({projects}) => {
   return (
     <>
           {projects.map(p => (

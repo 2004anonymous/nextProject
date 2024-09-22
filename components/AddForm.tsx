@@ -1,7 +1,6 @@
 "use client"
 import React, { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import connectDb from "@/libs/dbConnect";
 
 const AddForm = () => {
     const router = useRouter();
@@ -9,7 +8,6 @@ const AddForm = () => {
   const [description, setDescription] = useState<string>('')
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    await connectDb();
     const res = await fetch("/api/projects", {method:"POST",
         body: JSON.stringify({
           title: title,
